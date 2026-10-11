@@ -1,0 +1,5 @@
+# Root gitignore
+.env
+*.env
+.env.local
+.vscode/
