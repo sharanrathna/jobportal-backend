@@ -10,6 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface JobRepository extends JpaRepository<Job, Long> {
 
@@ -34,4 +36,12 @@ public interface JobRepository extends JpaRepository<Job, Long> {
     );
 
     long countByStatus(JobStatus status);
+
+    List<Job> findByStatus(JobStatus status);
+
+    List<Job> findByCompanyId(Long companyId);
+
+    long countByCompanyId(Long companyId);
+
+    long countByCompanyIdAndStatus(Long companyId, JobStatus status);
 }

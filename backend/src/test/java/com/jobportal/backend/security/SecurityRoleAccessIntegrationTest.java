@@ -2,6 +2,12 @@ package com.jobportal.backend.security;
 
 import com.jobportal.backend.entity.Role;
 import com.jobportal.backend.entity.User;
+import com.jobportal.backend.repository.CompanyProfileRepository;
+import com.jobportal.backend.repository.InterviewRepository;
+import com.jobportal.backend.repository.JobApplicationRepository;
+import com.jobportal.backend.repository.JobRepository;
+import com.jobportal.backend.repository.NotificationRepository;
+import com.jobportal.backend.repository.StudentProfileRepository;
 import com.jobportal.backend.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +29,24 @@ class SecurityRoleAccessIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
+    private JobApplicationRepository jobApplicationRepository;
+
+    @Autowired
+    private JobRepository jobRepository;
+
+    @Autowired
+    private StudentProfileRepository studentProfileRepository;
+
+    @Autowired
+    private CompanyProfileRepository companyProfileRepository;
+
+    @Autowired
+    private NotificationRepository notificationRepository;
+
+    @Autowired
+    private InterviewRepository interviewRepository;
+
+    @Autowired
     private UserRepository userRepository;
 
     @Autowired
@@ -37,6 +61,12 @@ class SecurityRoleAccessIntegrationTest {
 
     @BeforeEach
     void setUp() {
+        interviewRepository.deleteAll();
+        notificationRepository.deleteAll();
+        jobApplicationRepository.deleteAll();
+        jobRepository.deleteAll();
+        studentProfileRepository.deleteAll();
+        companyProfileRepository.deleteAll();
         userRepository.deleteAll();
 
         User student = User.builder()

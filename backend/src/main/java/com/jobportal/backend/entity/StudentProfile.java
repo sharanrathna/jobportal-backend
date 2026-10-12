@@ -40,6 +40,9 @@ public class StudentProfile {
     @Column(length = 1000)
     private String experience;
 
+    @Column(length = 1500)
+    private String projects;
+
     @Column(length = 255)
     private String resumeUrl;
 
