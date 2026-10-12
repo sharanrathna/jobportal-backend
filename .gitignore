@@ -1,13 +1,49 @@
 # Environment secrets
 .env
 .env.*
+.env.local
+*.env
 !.env.example
 !.env.*.example
 
 # Dependencies and builds
 node_modules/
 dist/
+/dist/
+build/
 target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# IDE
+# Help documentation
+HELP.md
+
+# Generated logs
+*.log
+hs_err_pid*.log
+replay_pid*.log
+
+# IDE & Editor files
 .vscode/
+.idea
+*.iws
+*.iml
+*.ipr
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/nbdist/
+/.nb-gradle/
