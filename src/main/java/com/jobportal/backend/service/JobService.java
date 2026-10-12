@@ -158,9 +158,9 @@ public class JobService {
             StudentProfile profile = profileOpt.get();
             if (profile.getSkills() != null && !profile.getSkills().isBlank()) {
                 Arrays.stream(profile.getSkills().split("[,;|/\\n]"))
-                        .map(String::trim)
+                        .map(s -> s.trim())
                         .filter(s -> !s.isEmpty())
-                        .map(String::toLowerCase)
+                        .map(s -> s.toLowerCase())
                         .forEach(studentSkills::add);
             }
             if (profile.getHeadline() != null) {
@@ -178,7 +178,7 @@ public class JobService {
             List<String> jobSkills = new ArrayList<>();
             if (job.getRequirements() != null && !job.getRequirements().isBlank()) {
                 Arrays.stream(job.getRequirements().split("[,;|/\\n]"))
-                        .map(String::trim)
+                        .map(s -> s.trim())
                         .filter(s -> !s.isEmpty())
                         .forEach(jobSkills::add);
             }
@@ -237,7 +237,7 @@ public class JobService {
                     .build());
         }
 
-        recommendations.sort(Comparator.comparingInt(JobRecommendationResponse::getMatchPercentage).reversed());
+        recommendations.sort(Comparator.comparingInt((JobRecommendationResponse r) -> r.getMatchPercentage()).reversed());
         return recommendations;
     }
 
